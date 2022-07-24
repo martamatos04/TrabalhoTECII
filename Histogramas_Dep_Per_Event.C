@@ -48,6 +48,9 @@ legend->Draw();
 
 cs->SaveAs("/home/rosas/Desktop/TrabalhoTECII/Graficos/alinea1/Histograma da Energia depositada por evento "+root_file("[0-3]")+".png");
 
+ficheiroGravar->Close();
+f->Close();
+
 }
 
 

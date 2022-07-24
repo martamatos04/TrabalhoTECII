@@ -60,7 +60,7 @@ newTree->Write();
 	
 TCanvas *cs = new TCanvas("Energia total depositada", "Energia total depositada");
 // A THStack irá servir para agregar os histogramas dos pioes, muoes e outras particulas no mesmo grafico
-THStack *hs = new THStack("hs","Energia depositada por particulas; log(Energia eV); log(Quantidade da particula)");
+THStack *hs = new THStack("hs","Energia depositada por particulas; Energia (keV); log(tempo (ns))");
 
 //PIÕES
 TH1D* histo_Pioes = new TH1D("Pioes", "Pioes", nBins, minBin, maxBin);
@@ -84,6 +84,7 @@ legend->AddEntry(histo_Pioes,"Pioes","l");
 legend->AddEntry(histo_Muoes,"Muoes","l");
 legend->AddEntry(histo_Outras,"Outras","l");
 hs->Draw("nostack");
+gPad->SetLogy();
 legend->Draw();
 
 // Salvar os histogramas num ficheiro root
@@ -92,9 +93,9 @@ histo_Muoes->Write();
 histo_Outras->Write();
 hs->Write();
 
+cs->SaveAs("/home/rosas/Desktop/TrabalhoTECII/Graficos/alinea3/Histograma ETotal Particula "+root_file("[0-3]")+".png");
+
 ficheiroGravar->Close();
 ficheiro->Close();
-
-cs->SaveAs("/home/rosas/Desktop/TrabalhoTECII/Graficos/alinea3/Histograma ETotal Particula"+root_file("[0-3]")+".png");
 
 }
